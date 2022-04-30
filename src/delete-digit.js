@@ -9,13 +9,32 @@ const { NotImplementedError } = require('../extensions/index.js');
  *
  * @example
  * For n = 152, the output should be 52
- *
+ * СОЗДАТЬ МАССИВ ИЗ n 
+ * ПРОБЕЖАТЬСЯ ПО n 
+ * УБИРАТЬ ЦИФРУ ИЗ МАССИВА
+ * ДЕЛАТЬ СНОВА ЧИСЛО
+ * ПУШИТЬ НОВЫЕ ЗНАЧЕНИЯ В МАССИВ 
+ * СРАВНИВАТЬ 
+ * ВЫВОДИТЬ НАИБОЛЬШЕЕ
  */
-function deleteDigit(/* n */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+function deleteDigit(n) {
+  let result = 0;
+    const numDigits = [];
+    while (n) {
+        numDigits.push(n % 10);
+        n = Math.floor(n / 10);
+    }
+    for (let i = 0; i < numDigits.length; i++) {
+        let num = 0;
+        for (let j = numDigits.length - 1; j >= 0; j--) {
+            if (j !== i) {
+                num = num * 10 + numDigits[j];
+            }
+        }
+        result = Math.max(num, result);
+    }
+    return result;
 }
-
 module.exports = {
   deleteDigit
 };
