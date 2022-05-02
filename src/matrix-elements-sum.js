@@ -18,21 +18,19 @@ const { NotImplementedError } = require('../extensions/index.js');
  */
 function getMatrixElementsSum(matrix) {
   let result = 0;
-  let array = [];
-  for (let arr = 1; arr < matrix.length; arr++) {
-    for (let i = 0; i < matrix[arr].length; i++) {
-      // console.log(matrix[arr[i]])
-      if (matrix[arr - 1][i] !== 0) {
-        array.push(matrix[arr][i])
+  for (let arr = 0; arr < matrix.length; arr++) {
+    for (let i = 0; i < matrix[0].length; i++) {
+      if (arr > 0) {
+        if (matrix[arr - 1][i] === 0) {
+          matrix[arr][i] = 0;
+        }
       }
+      result += matrix[arr][i]
     }
   }
-  console.log(array);
+  return result
 }
-getMatrixElementsSum([
-  [1, 2, 3, 4],
-  [0, 5, 0, 0],
-  [2, 0, 3, 3]])
+
 module.exports = {
   getMatrixElementsSum
 };
